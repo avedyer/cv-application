@@ -53,25 +53,39 @@ class Form extends Component {
       }
     }
 
-    handleChange = (e) => {
-      this.setState({
-        [this.focus]: e.target.value,
-      })
-    };
+    patchSection = (section, key, newData) => {
 
-    textInput = (label, key) => {
+      let newObj = {}
+
+      Object.keys(this.state[section]).forEach(element => {
+          if (element === key) {
+            newObj[element] = newData
+          }
+
+          else {
+            newObj[element] = this.state[section][element]
+          }
+
+      });
+
+      return newObj
+    }
+
+
+    textInput = (label, section, key) => {
       return (
         <div class="textInput">
-          <label htmlFor={label}Input>{label}</label>
+          <label htmlFor={key}>{label}</label>
           <input 
             onChange={(e) => {
               this.setState({
-                [key]: e.target.value,
+                [section]: this.patchSection(section, key, e.target.value)
               })
             }}
+            defaultValue={this.state[section][key]}
             type="text"
-            value={key}
-            id={label}Input
+            name={key}
+            id={key}
           />
         </div>
         
@@ -84,7 +98,9 @@ class Form extends Component {
           <CV data={this.state} />
           <div id="editor">
             <h2>Personal</h2>
-            {this.textInput("Name", this.state.header.name)}
+            {this.textInput("Name", 'header', 'name')}
+            {this.textInput("Title", 'header', 'title')}
+            {this.textInput("Bio", 'header', 'bio')}
           </div>
         </div>
       );
