@@ -27,6 +27,10 @@ class Line extends Component {
                     />;
     }
 
+    componentDidUpdate() {
+        this.initEditor();
+    }
+
     edit() {
         this.setState({
             text: this.state.text,
@@ -47,7 +51,7 @@ class Line extends Component {
 
         return this.state.editing ? 
             this.editor :
-            <Tag onClick={this.edit}>{this.state.text}</Tag>
+            <Tag onClick={this.edit} innerRef={this.state.text}>{this.state.text}</Tag>
     }
 }
 

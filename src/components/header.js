@@ -17,7 +17,7 @@ class Header extends Component {
         
         return (
         <div id="header">
-            <Line tag="h1" value="First Last" />
+            <Line tag="h1" value={this.innerref ? this.innerref : name} />
             <h2 id="title"> {title} </h2>
             <p id="bio">{bio}</p>
         </div>
