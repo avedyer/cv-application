@@ -12,11 +12,11 @@ class CV extends Component {
       
       return (
         <div id="cv">
-            <Header data={data.header}/>
-            <Contact data={data.contact}/>
-            <Education data={data.education}/>
-            <Experience data={data.experience}/>
-            <Skills data={data.skills}/>
+            <Header />
+            <Contact />
+            <Education />
+            <Experience />
+            <Skills />
         </div>
       );
     }

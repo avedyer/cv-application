@@ -1,10 +1,26 @@
 import React, { Component } from 'react';
 
 class Education extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            degrees: [
+                {
+                  title: "B.S. in Engineering",
+                  school: "University of Sallsworth",
+                  etc: {
+                        gpa: '3.6',
+                        obtained: 'May 2018'
+                    }
+                }
+            ],
+        }
+      }
   
     render () {
 
-        const degrees = this.props.data.degrees
+        const degrees = this.state.degrees
 
         return (
             <div id="education">

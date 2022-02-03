@@ -4,11 +4,18 @@ class Skills extends Component {
     constructor(props) {
       super(props);
 
+      this.state = {
+        skills: [
+          "Leadership experience",
+          "Quickbooks",
+          "Project Management"
+        ]
+      }
     }
   
     render () {
 
-      const skills = this.props.data.skills
+      const skills = this.state.skills
 
       return (
         <div id="skills">
