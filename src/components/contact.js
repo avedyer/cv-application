@@ -5,21 +5,33 @@ class Contact extends Component {
     constructor(props) {
         super(props);
             this.state = {
-                location: "My City",
-                phone: "999-999-9999",
-                email: "example@gmail.com",
+                contacts: [
+                    "My City",
+                    "999-999-9999",
+                    "example@gmail.com",
+                ]
             }
+        this.addContact = this.addContact.bind(this) 
       }
+
+    addContact() {
+        this.setState({
+            contacts: this.state.contacts.concat('New contact')
+        })
+    }
   
     render () {
         
         return (
             <div id="contact">
                 <ul>
-                    {Object.entries(this.state).map(([key, value]) => (
-                        <Line tag="li" value={this.innerref ? this.innerref : value}/>
+                    {Object.entries(this.state.contacts).map((contact) => (
+                        <Line tag="li" value={this.innerref ? this.innerref : contact}/>
                     ))}
                 </ul>
+                <button 
+                    onClick={this.addContact}
+                >+</button>
             </div>
         );
     }

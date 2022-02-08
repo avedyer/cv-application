@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Line from './line';
 
 class Experience extends Component {
   constructor(props) {
@@ -27,11 +28,11 @@ class Experience extends Component {
           <h2>Experience</h2>
           {positions.map((position) => 
               <div className="degree">
-                  <h3>{position.title}</h3>
-                  <h4>{position.start} - {position.end}</h4>
+                  <Line tag="h3" value={this.innerref ? this.innerref : position.title}/>
+                  <Line tag="h4" value={this.innerref ? this.innerref : `${position.start} - ${position.end}`}/>
                   <ul>
                     {Object.entries(position.duties).map(([key, value]) => 
-                        <li key={key}>{value}</li>
+                        <Line tag="li" key={key} value={this.innerref ? this.innerref : value}/>
                     )}
                   </ul>
               </div>

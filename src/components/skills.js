@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Line from './line';
 
 class Skills extends Component {
     constructor(props) {
@@ -11,6 +12,14 @@ class Skills extends Component {
           "Project Management"
         ]
       }
+      this.addSkill = this.addSkill.bind(this)
+    }
+
+    addSkill() {
+      console.log(this.state.skills)
+      this.setState({
+        skills: this.state.skills.concat('New skill')
+      })
     }
   
     render () {
@@ -22,9 +31,12 @@ class Skills extends Component {
           <h2>Skills</h2>
           <ul>
             {skills.map((skill) => 
-              <li key={skill}>{skill}</li>
+              <Line tag="li" value={this.innerref ? this.innerref : skill}/>
             )}
           </ul>
+          <button 
+            onClick={this.addSkill}
+          >+</button>
         </div>
       );
     }
