@@ -9,8 +9,10 @@ class Line extends Component {
             default: props.value,
             editing: false,
         };
+        this.Tag = `${this.props.tag}`;
         this.edit = this.edit.bind(this);
         this.save = this.save.bind(this);
+        this.handleClick = this.handleClick.bind(this);
         this.initEditor();
     }
 
@@ -25,6 +27,7 @@ class Line extends Component {
                         }}
                         autoFocus={true}
                     />;
+        document.addEventListener('mouseup', this.handleClick);
     }
 
     componentDidUpdate() {
@@ -46,8 +49,21 @@ class Line extends Component {
         })
     };
 
+    handleClick(e) {
+        //Closes input if clicked outside.
+
+        let input = document.querySelector('input')
+        if (!input) {
+            return
+        }
+        if (!input.contains(e.target)) {
+            this.save('')
+            document.removeEventListener('mouseup', this.handleClick)
+        }
+    }
+
     render () {
-        const Tag = `${this.props.tag}`;
+        const Tag = this.Tag
 
         return this.state.editing ? 
             this.editor :

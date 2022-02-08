@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Line from './line';
 
 class Contact extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class Contact extends Component {
             <div id="contact">
                 <ul>
                     {Object.entries(this.state).map(([key, value]) => (
-                        <li key={key}>{value}</li>
+                        <Line tag="li" value={this.innerref ? this.innerref : value}/>
                     ))}
                 </ul>
             </div>
